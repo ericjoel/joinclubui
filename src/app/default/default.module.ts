@@ -2,12 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { DefaultRoutingModule } from './default-routing.module';
+import { DefaultComponent } from './default.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { NavbarComponent } from './layout/navbar/navbar.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    DefaultRoutingModule
+    DefaultRoutingModule,
+    SharedModule
   ],
-  declarations: []
+  declarations: [DefaultComponent, HomeComponent, LoginComponent, RegisterComponent, FooterComponent, NavbarComponent]
 })
 export class DefaultModule { }

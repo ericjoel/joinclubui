@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormValidator } from '../../shared/utils/form-validator';
 import { CustomValidators } from '../../shared/utils/custom-validator';
+import { User } from '../../shared/models/User';
+import { JoinclubAuthService } from '../../joinclub-auth.service';
+import { ITokenResponse } from '../../shared/models/interfaces/ITokenResponse';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +12,11 @@ import { CustomValidators } from '../../shared/utils/custom-validator';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent extends FormValidator implements OnInit {
-
+  
+  user: User;
+  isLoadingLogin: boolean;
+  passwordErrorMessage: string;
+  
   formErrors = {
     'username': '',
     'passwordControl': ''
@@ -31,7 +38,8 @@ export class LoginComponent extends FormValidator implements OnInit {
     }
   };
 
-  constructor(_fb: FormBuilder) { 
+  constructor(_fb: FormBuilder, 
+    private _joinclubAuthService: JoinclubAuthService) { 
     super();
 
     this.form = _fb.group({
@@ -65,6 +73,33 @@ export class LoginComponent extends FormValidator implements OnInit {
   }
 
   login(e: Event) {
-    
+    e.preventDefault();
+    this.form.updateValueAndValidity();
+
+    if (this.form.invalid) {
+      
+      return;
+    }
+    console.log("entro aca");
+    this.isLoadingLogin = true;
+    this.user = this.form.value;
+    this.user.password = this.form.controls['passwordControl'].value;
+
+    this._joinclubAuthService.loginPasswordService(this.user).subscribe(
+      (token: ITokenResponse) => {
+        this.isLoadingLogin = false;
+        this._joinclubAuthService.saveToken(token);
+        this._joinclubAuthService.redirectUrlAfterLogin();
+      },
+      (error) => {
+        this.isLoadingLogin = false;
+        this.form.controls['username'].setErrors({ 'incorrect': true });
+        this.form.controls['passwordControl'].setErrors({ 'incorrect': true });
+        this.passwordErrorMessage = error.error.message;
+        // this.passwordError = true;
+        // this.passwordInputElement.nativeElement.focus();
+      }
+    );
+
   }
 }

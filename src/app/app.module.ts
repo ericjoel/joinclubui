@@ -1,3 +1,6 @@
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -13,6 +16,8 @@ import { DefaultModule } from './default/default.module';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    HttpClientModule,
     DefaultModule,
     SharedModule,
     UserModule,

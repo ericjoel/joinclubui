@@ -1,26 +1,30 @@
 <mat-card class="login-card">
   <mat-card-header>    
     <mat-card-title><h1>Log in</h1></mat-card-title>
-    <mat-card-subtitle>Not registered with us yet? <a href="#">Sign up</a></mat-card-subtitle>
+    <mat-card-subtitle>Not registered with us yet? <a routerLink="/register">Sign up</a></mat-card-subtitle>
   </mat-card-header>  
-  <mat-card-content class="login-content">
-    <form [formGroup]="form" (submit)="login($event)">
-        <mat-form-field class="login-full-width">
-          <input matInput formControlName="username" autofocus type="email" placeholder="Email">
-          <mat-error>
-              {{formErrors.username}}
-          </mat-error>
-        </mat-form-field>
+  <form [formGroup]="form" (submit)="login($event)">
+    <mat-card-content class="login-content">
+      
+          <mat-form-field class="login-full-width">
+            <input matInput formControlName="username" autofocus type="email" placeholder="Email">
+            <mat-error>
+                {{formErrors.username}}
+            </mat-error>
+          </mat-form-field>
 
-        <mat-form-field class="login-full-width">
-          <input matInput formControlName="passwordControl" type="password" placeholder="Password">
+          <mat-form-field class="login-full-width">
+            <input matInput formControlName="passwordControl" type="password" placeholder="Password">
+            <mat-error>
+                {{formErrors.passwordControl}}
+            </mat-error>
+          </mat-form-field>  
           <mat-error>
-              {{formErrors.passwordControl}}
-          </mat-error>
-        </mat-form-field>        
-      </form>
-  </mat-card-content>
-  <mat-card-actions class="login-actions">
-    <button mat-button>LOG IN</button>    
-  </mat-card-actions>
+              {{passwordErrorMessage}}
+          </mat-error>      
+    </mat-card-content>
+    <mat-card-actions class="login-actions">
+      <button type="submit" mat-button [disabled]="isLoadingLogin">LOG IN</button>    
+    </mat-card-actions>
+  </form>
 </mat-card>  

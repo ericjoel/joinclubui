@@ -1,0 +1,25 @@
+.register-card {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.register-full-width {
+    width: 100%;
+}
+  
+.register-content{
+    padding: 10px;
+}
+
+.register-actions {
+    padding: 10px;
+    margin-bottom: 20px !important;
+}
+
+.text-center {
+    padding: 10px;
+    font-size: 0.8em;
+    text-align: center;
+}

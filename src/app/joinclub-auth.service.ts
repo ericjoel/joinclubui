@@ -67,7 +67,7 @@ export class JoinclubAuthService {
      */
     redirectUrlAfterLogin() {
         const redirect = sessionStorage.getItem(environment.redirectUrl);
-        const url = (!!redirect) ? redirect : `home`;
+        const url = (!!redirect) ? redirect : `u/home`;
         this._router.navigate([url]);
     }
   

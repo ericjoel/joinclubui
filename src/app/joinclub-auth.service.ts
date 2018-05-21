@@ -67,8 +67,22 @@ export class JoinclubAuthService {
      */
     redirectUrlAfterLogin() {
         const redirect = sessionStorage.getItem(environment.redirectUrl);
-        const url = (!!redirect) ? redirect : `home`;
+        const url = (!!redirect) ? redirect : `u/home`;
         this._router.navigate([url]);
     }
+
+    signOut() {
+        localStorage.removeItem(environment.accessTokenApi);
+        localStorage.removeItem(environment.typeTokenApi);
+    
+        const cookies = document.cookie.split(";");
+    
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i];
+          const eqPos = cookie.indexOf("=");
+          const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+          document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        }
+      }
   
 }

@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { DefaultRoutingModule } from './default-routing.module';
 import { DefaultComponent } from './default.component';
@@ -9,12 +8,13 @@ import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { SharedModule } from '../shared/shared.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
+    CommonModule,    
     DefaultRoutingModule,
-    SharedModule
   ],
   declarations: [DefaultComponent, HomeComponent, LoginComponent, RegisterComponent, FooterComponent, NavbarComponent]
 })

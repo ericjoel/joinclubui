@@ -1,7 +1,5 @@
-import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -9,18 +7,16 @@ import { UserModule } from './user/user.module';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { DefaultModule } from './default/default.module';
+import { CommonModule } from '@angular/common';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
-    HttpModule,
+    BrowserAnimationsModule,
     HttpClientModule,
-    DefaultModule,
-    SharedModule,
-    UserModule,
     AppRoutingModule
   ],
   providers: [],

@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule , Routes } from '@angular/router';
-
+import { DefaultModule } from './default/default.module';
+import { UserModule } from './user/user.module';
+  
 const appRoutes: Routes = [
     {
         path: '',
-        loadChildren: 'app/default/default.module#DefaultModule'
-      },
-      {
+        loadChildren: () => DefaultModule,
+    },
+    {
         path: 'u',
-        loadChildren: 'app/user/user.module#UserModule'
-      }
+        loadChildren: () => UserModule,
+    }
     
 ];
 @NgModule({

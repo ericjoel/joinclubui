@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user.component';
+import { SharedModule } from '../shared/shared.module';
+import { CreatePoolComponent } from './create-pool/create-pool.component';
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     UserRoutingModule
   ],
-  declarations: [NavbarComponent, UserComponent, HomeComponent]
+  declarations: [NavbarComponent, UserComponent, HomeComponent, CreatePoolComponent]
 })
 export class UserModule { }

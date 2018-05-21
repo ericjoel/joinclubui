@@ -30,6 +30,16 @@ export class JoinclubAuthService {
         return this.http.post(`${this.baseUrl}api/login`, formData);
     }
 
+    registerService(user: User) {
+        const formData: FormData = new FormData();
+        formData.set('email', user.email);
+        formData.set('password', user.password);
+        formData.set('password_confirmation', user.password);
+        formData.set('name', user.name);
+
+        return this.http.post(`${this.baseUrl}api/register`, formData);
+    }
+
     /**
      * Set Token in the browser localstorage
      *

@@ -80,7 +80,7 @@ export class LoginComponent extends FormValidator implements OnInit {
       
       return;
     }
-    console.log("entro aca");
+    
     this.isLoadingLogin = true;
     this.user = this.form.value;
     this.user.password = this.form.controls['passwordControl'].value;
@@ -96,8 +96,6 @@ export class LoginComponent extends FormValidator implements OnInit {
         this.form.controls['username'].setErrors({ 'incorrect': true });
         this.form.controls['passwordControl'].setErrors({ 'incorrect': true });
         this.passwordErrorMessage = error.error.message;
-        // this.passwordError = true;
-        // this.passwordInputElement.nativeElement.focus();
       }
     );
 

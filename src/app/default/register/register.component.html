@@ -1,3 +1,38 @@
-<p>
-  register works!
-</p>
+<mat-card class="register-card">
+    <mat-card-header>    
+      <mat-card-title><h1>Sign up</h1></mat-card-title>      
+    </mat-card-header>  
+    <form [formGroup]="form" (submit)="register($event)">
+      <mat-card-content class="register-content">     
+          <mat-form-field class="register-full-width">
+            <input matInput formControlName="name" autofocus type="text" placeholder="Name">
+            <mat-error>
+                {{formErrors.name}}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="register-full-width">
+            <input matInput formControlName="username" autofocus type="email" placeholder="Email">
+            <mat-error>
+                {{formErrors.username}}
+            </mat-error>
+            <mat-error>
+                {{usernameErrorMessage}}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="register-full-width">
+            <input matInput formControlName="passwordControl" type="password" placeholder="Password">
+            <mat-error>
+                {{formErrors.passwordControl}}
+            </mat-error>
+            <mat-error>
+                {{generalErrorMessage}}
+            </mat-error>
+          </mat-form-field>  
+      </mat-card-content>
+      <mat-card-actions class="register-actions">
+        <button type="submit" class="register-full-width" mat-button [disabled]="isLoadingRegister">CONTINUE</button>    
+      </mat-card-actions>
+      <mat-divider></mat-divider>
+      <div class="text-center">Already a member? <a routerLink="/login">Log in</a>.</div>
+    </form>
+</mat-card>

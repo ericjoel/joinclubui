@@ -13,6 +13,7 @@ import { BehaviorSubject } from 'rxjs';
 import { EventModel } from '../models/EventModel';
 import { environment } from '../../../environments/environment';
 import { JoinclubAuthService } from '../../joinclub-auth.service';
+import { IEventResponse } from '../models/response/event-response';
 
 @Injectable()
 export class EventService {
@@ -25,7 +26,7 @@ export class EventService {
         private joinclubAuthService: JoinclubAuthService) { }
     
     getEventService() {
-        return this._http.get<EventModel>
+        return this._http.get<IEventResponse[]>
             (`${this._baseUrl}/api/events`);
     }
 

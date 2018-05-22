@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ListEventsComponent } from '../../shared/components/list-events/list-events.component';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,7 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

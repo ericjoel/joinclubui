@@ -1,0 +1,10 @@
+.event-card{
+    background-color: #fbfbfb;
+    height: 300px;
+    margin: 10px;
+}
+.content-card{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 150px;
+}

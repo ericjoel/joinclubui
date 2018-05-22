@@ -1,0 +1,22 @@
+<mat-card class="detail-event-card" *ngIf="event">
+    <mat-error>{{joinErrorMessage}}</mat-error>
+    {{joinMessageSuccess}}
+    <mat-card-header>    
+      <mat-card-title><h1>{{event.presentation.name}}</h1></mat-card-title> 
+      <mat-card-subtitle>{{event.speaker.name}}</mat-card-subtitle>      
+      <mat-card-subtitle>{{event.speaker.phone}}</mat-card-subtitle>                 
+      <mat-card-subtitle>{{event.hall.name}}</mat-card-subtitle>    
+      <mat-card-subtitle>{{event.hall.address}}</mat-card-subtitle>             
+      <mat-card-subtitle>{{event.date_event}} / {{event.start_hour}} - {{event.finish_hour}}</mat-card-subtitle>     
+    </mat-card-header>  
+    <mat-divider></mat-divider>
+    <mat-card-content class="register-content">    
+      <p>
+        {{event.presentation.description}} 
+      </p>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions>        
+        <button type="submit" class="button-full-width" (click)="joinEvent()" mat-button>JOIN EVENT</button>    
+    </mat-card-actions>
+</mat-card>

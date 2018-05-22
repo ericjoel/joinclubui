@@ -29,6 +29,15 @@ export class EventService {
         return this._http.get<IEventResponse[]>
             (`${this._baseUrl}/api/events`);
     }
+    
+    joinEvent(id: string) {        
+        return this._http.post(`${this._baseUrl}api/events/${id}/members`, null);
+    }
+
+    getEventById(id: string) {
+        return this._http.get<IEventResponse>
+            (`${this._baseUrl}/api/events/${id}`);
+    }
 
     postEvent(event: EventModel) {
         const formData: FormData = new FormData();

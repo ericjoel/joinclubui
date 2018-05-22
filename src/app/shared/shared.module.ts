@@ -42,6 +42,7 @@ import {
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListEventsComponent } from './components/list-events/list-events.component';
+import { DetailEventComponent } from './components/detail-event/detail-event.component';
 
 
 @NgModule({
@@ -124,10 +125,12 @@ import { ListEventsComponent } from './components/list-events/list-events.compon
     MatTreeModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    ListEventsComponent
+    ListEventsComponent,
+    DetailEventComponent
   ],
   declarations: [
-    ListEventsComponent
+    ListEventsComponent,
+    DetailEventComponent
   ]
 })
 export class SharedModule { }

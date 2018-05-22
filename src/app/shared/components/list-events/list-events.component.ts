@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { EventService } from '../../services/event.service';
 import { EventModel } from '../../models/EventModel';
 import { IEventResponse } from '../../models/response/event-response';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-events',
@@ -12,7 +13,8 @@ import { IEventResponse } from '../../models/response/event-response';
 export class ListEventsComponent implements OnInit {
   events: IEventResponse[];
   
-  constructor(private eventService: EventService) { 
+  constructor(private eventService: EventService,
+    private _router: Router) { 
 
   }
 

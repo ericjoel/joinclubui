@@ -120,9 +120,9 @@ export class RegisterComponent extends FormValidator implements OnInit {
 
   login() {
     this._joinclubAuthService.loginPasswordService(this.user).subscribe(
-      (token: ITokenResponse) => {
+      (data: any) => {
         this.isLoadingRegister = false;
-        this._joinclubAuthService.saveToken(token);
+        this._joinclubAuthService.saveToken(data.data);
         this._joinclubAuthService.redirectUrlAfterLogin();
       },
       (error) => {

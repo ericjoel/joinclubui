@@ -47,6 +47,7 @@ export class EventService {
         formData.set('hall_id', event.hall_id.toString());
         formData.set('presentation_id', event.presentation_id.toString());
         formData.set('speaker_id', event.speaker_id.toString());
+        formData.set('capacity', event.capacity.toString());
         
         return this._http.post(`${this._baseUrl}api/events`, formData);
     }

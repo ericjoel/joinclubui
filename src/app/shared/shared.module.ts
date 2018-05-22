@@ -43,11 +43,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListEventsComponent } from './components/list-events/list-events.component';
 import { DetailEventComponent } from './components/detail-event/detail-event.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,

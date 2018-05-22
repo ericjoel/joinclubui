@@ -157,6 +157,12 @@ export class CustomValidators {
     const valid = regEx.test(control.value);
     return valid ? null : { emailValidator: true };
   }
+
+  static numberValidator(control: FormControl) {
+    const regEx = /^[0-9]*$/;
+    const valid = regEx.test(control.value);
+    return valid ? null : { numberValidator: true };
+  }
   
   /**
    * Validator not spaces in password

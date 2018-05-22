@@ -89,6 +89,7 @@ export class LoginComponent extends FormValidator implements OnInit {
       (data: any) => {
         this.isLoadingLogin = false;
         this._joinclubAuthService.saveToken(data.data);
+        console.log(data);
         this._joinclubAuthService.redirectUrlAfterLogin();
       },
       (error) => {

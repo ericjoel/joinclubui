@@ -8,12 +8,15 @@ import { SharedModule } from '../shared/shared.module';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { CommonModule } from '@angular/common';
 import { ModelHallComponent } from './model-hall/model-hall.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     SharedModule,
     CommonModule,
-    UserRoutingModule
+    RouterModule,
+    UserRoutingModule,
+    
   ],
   declarations: [NavbarComponent, UserComponent, HomeComponent, CreateEventComponent, ModelHallComponent],
   providers: [

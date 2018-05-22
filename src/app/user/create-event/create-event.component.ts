@@ -59,7 +59,8 @@ export class CreateEventComponent extends FormValidator implements OnInit {
     'hall': '',
     'dateEvent': '',
     'startHour': '',
-    'finishHour': ''    
+    'finishHour': '',
+    'capacity': ''
   };
 
   validationFormHallMessages = {
@@ -80,6 +81,10 @@ export class CreateEventComponent extends FormValidator implements OnInit {
       'formatTimeCorrect': 'time invalid format',
       'maxlength': 'overlong',
       'finishHourValid': 'finish hour is invalid is mayor to start hour'
+    },
+    'capacity' : {
+      'required': 'required field',
+      'numberValidator': 'invalid number'
     }
   };
 
@@ -186,6 +191,13 @@ export class CreateEventComponent extends FormValidator implements OnInit {
             Validators.required,
             Validators.maxLength(5),
             CustomValidators.formatTimeCorrect
+          ])
+        ],
+        capacity: [
+          null,
+          Validators.compose([
+            Validators.required,
+            CustomValidators.numberValidator
           ])
         ]
       }, {validator: CustomValidators.finishHourValid('startHour', 'finishHour')});
@@ -352,7 +364,8 @@ export class CreateEventComponent extends FormValidator implements OnInit {
     var idPresentation = this.idPresentationSelected;
     var idSpeaker = this.idSpeakerSelected;
     var dateChanged = this.getDateFormated(date);
-
+    var capacity = this.secondFormGroup.controls['capacity'].value;
+    eventInsert.capacity = capacity;
     eventInsert.date_event = dateChanged;
     eventInsert.start_hour = startHour;
     eventInsert.finish_hour = finishHour;

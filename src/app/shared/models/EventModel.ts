@@ -6,5 +6,6 @@ export class EventModel {
     hall_id: number;
     presentation_id: number;
     speaker_id: number;
+    capacity: number;
 }
   

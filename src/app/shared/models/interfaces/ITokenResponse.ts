@@ -1,4 +1,4 @@
 export interface ITokenResponse {
-    access_token: string;
+  api_token: string;
   }
   

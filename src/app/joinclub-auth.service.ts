@@ -46,7 +46,7 @@ export class JoinclubAuthService {
      * @param {ITokenResponse} token
      */
     saveToken(token: ITokenResponse) {
-        localStorage.setItem(environment.accessTokenApi, token.access_token);        
+        localStorage.setItem(environment.accessTokenApi, token.api_token);        
         localStorage.setItem(environment.typeTokenApi, 'Bearer');
     }
 

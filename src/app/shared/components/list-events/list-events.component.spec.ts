@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreatePoolComponent } from './create-pool.component';
+import { ListEventsComponent } from './list-events.component';
 
-describe('CreatePoolComponent', () => {
-  let component: CreatePoolComponent;
-  let fixture: ComponentFixture<CreatePoolComponent>;
+describe('ListEventsComponent', () => {
+  let component: ListEventsComponent;
+  let fixture: ComponentFixture<ListEventsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreatePoolComponent ]
+      declarations: [ ListEventsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreatePoolComponent);
+    fixture = TestBed.createComponent(ListEventsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

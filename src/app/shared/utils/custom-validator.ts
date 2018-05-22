@@ -1,6 +1,7 @@
 // Angular
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, AbstractControl } from '@angular/forms';
+import { IPresentationResponse } from '../models/response/presentation-response';
 
 @Injectable()
 export class CustomValidators {
@@ -29,6 +30,13 @@ export class CustomValidators {
     const regEx = /(?=.*[0-9])/;
     const valid = regEx.test(control.value);
     return valid ? null : { includNumber: true };
+  }
+
+
+  static formatTimeCorrect(control: FormControl) {
+    const regEx = /([01]?[0-9]|2[0-3]):[0-5][0-9]/;
+    const valid = regEx.test(control.value);
+    return valid ? null : { formatTimeCorrect: true };
   }
 
   /**
@@ -166,4 +174,31 @@ export class CustomValidators {
     }
     return null;
   }
+  
+  // FORM GROUP VALIDATORS
+  static finishHourValid(startHourKey: string, finishHourKey: string) {
+    return (group: FormGroup): {[key: string]: any} => {
+      let startHour = group.controls[startHourKey];
+      let finishHour = group.controls[finishHourKey];
+      var inicio = new Date(Date.parse(`Mon, 25 Dec 1995 ${startHour.value}:00 GMT`));
+      var fin = new Date(Date.parse(`Mon, 25 Dec 1995 ${finishHour.value}:00 GMT`));
+      
+      if (fin.getTime() <= inicio.getTime()) {
+        return {
+          finishHourValid: true
+        };
+      }
+      return null;
+    }
+  }
+
+
+  static validatePresentation = (presentations: IPresentationResponse[]) => {
+    return (control:FormControl) => {
+      console.log(presentations);
+      console.log(control.value);
+      return null;
+    }
+  }
+
 }

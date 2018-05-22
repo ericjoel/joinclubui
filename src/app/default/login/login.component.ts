@@ -86,9 +86,9 @@ export class LoginComponent extends FormValidator implements OnInit {
     this.user.password = this.form.controls['passwordControl'].value;
 
     this._joinclubAuthService.loginPasswordService(this.user).subscribe(
-      (token: ITokenResponse) => {
+      (data: any) => {
         this.isLoadingLogin = false;
-        this._joinclubAuthService.saveToken(token);
+        this._joinclubAuthService.saveToken(data.data);
         this._joinclubAuthService.redirectUrlAfterLogin();
       },
       (error) => {

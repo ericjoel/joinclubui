@@ -1,0 +1,130 @@
+<mat-card class="principal-card">
+    <div class="component-title">
+        <mat-card-title><h2>Start a new Event</h2></mat-card-title>
+    </div>
+</mat-card>
+
+<mat-vertical-stepper #stepper linear> 
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Fill out event details</ng-template>
+      <div>
+        <mat-form-field class="full-width">
+          <input type="text" placeholder="Choose a presentation" aria-label="Number" 
+          matInput (change)="changePresentation()" 
+          formControlName="presentation" [matAutocomplete]="autoPresentation" >
+          <mat-error>
+              {{formErrors.presentation}}
+          </mat-error>
+          <mat-error>
+              {{errorPresentationMessage}}
+          </mat-error>
+          <mat-autocomplete #autoPresentation="matAutocomplete"
+          (optionSelected)="onSelectionChanged($event)" [displayWith]="displayFnPresesentation">
+            <mat-option *ngFor="let option of filteredOptionsPresentation | async" [value]="option">
+              {{ option.name }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input type="text" placeholder="Choose a speaker" aria-label="Number" 
+          matInput formControlName="speaker" (change)="changeSpeaker()" [matAutocomplete]="auto" >
+          <mat-error>
+              {{formErrors.speaker}}
+          </mat-error>
+          <mat-autocomplete #auto="matAutocomplete"
+          (optionSelected)="onSelectionChangedSpeaker($event)" [displayWith]="displayFnSpeaker">
+            <mat-option *ngFor="let option of filteredOptionsSpeakers | async" [value]="option">
+              {{ option.name }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <textarea matInput rows="5" formControlName="description" placeholder="Describe who should join, and what your Event will do."></textarea>
+          <mat-error>
+              {{formErrors.description}}
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <ng-template matStepLabel>Fill out hall and schedule details</ng-template>
+    <div>       
+      <form [formGroup]="secondFormGroup" (submit)="createEvent($event)">       
+        <div class="flex-grid">
+          <div class="col"> 
+            <div>Select a hall:</div>
+            <mat-grid-list cols="3" rowHeight="1:1">
+              <mat-grid-tile *ngFor="let hall of halls">
+                  <img (click)="loadSchedules(hall.id, hall.name)" src="{{hall.image}}" alt="{{hall.name}}" class="cursor-image" layout-fill>
+              </mat-grid-tile>
+            </mat-grid-list>
+          </div>
+          <div class="col"> 
+                <mat-form-field class="full-width">
+                  <input type="text" placeholder="Hall name"
+                  matInput formControlName="hall"  (change)="changeHallName()">
+                  <mat-error>
+                      {{formErrors.hall}}
+                  </mat-error>
+                </mat-form-field>
+                
+                <mat-form-field class="full-width">
+                  <input matInput [min]="minDate" [matDatepicker]="pickerEvent" 
+                        placeholder="Event date" formControlName="dateEvent"
+                        (change)="loadHallInfo()" (dateInput)="loadHallInfo()">
+                  <mat-error>
+                      {{formErrors.dateEvent}}
+                  </mat-error>
+                  <mat-datepicker-toggle matSuffix [for]="pickerEvent"></mat-datepicker-toggle>
+                  <mat-datepicker #pickerEvent ></mat-datepicker>
+                </mat-form-field>
+                
+                <mat-form-field class="full-width">
+                  <input type="text" placeholder="Start hour (HH:MM)"
+                  matInput formControlName="startHour" >
+                  <mat-error>
+                      {{formErrors.startHour}}
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                  <input type="text" placeholder="Finish hour (HH:MM)"
+                  matInput formControlName="finishHour" >
+                  <mat-error>
+                      {{formErrors.finishHour}}
+                  </mat-error>                
+                </mat-form-field>
+                <mat-error>
+                    {{errorFinishHour}}
+                </mat-error>
+                <mat-label>Events on selected hall:</mat-label>
+                <mat-list class="full-width">
+                  <mat-list-item *ngFor="let event of events"> {{event.start_hour}}  -  {{event.finish_hour}} </mat-list-item>                
+                </mat-list>            
+          </div>
+        </div>
+        
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext type="submit">Next</button>
+      </form>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Finish</ng-template>
+    <mat-spinner class="center" *ngIf="loading"></mat-spinner>
+    <mat-label *ngIf="success">Congratulations! =D, We will send you an email with the details about your event.</mat-label>
+    <mat-error>
+        {{errorServerPost}}
+    </mat-error>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>

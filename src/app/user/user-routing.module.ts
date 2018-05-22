@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user.component';
-import { CreatePoolComponent } from './create-pool/create-pool.component';
+import { CreateEventComponent } from './create-event/create-event.component';
 
 const routes: Routes = [
   {
@@ -18,8 +18,8 @@ const routes: Routes = [
       component: HomeComponent
     },
     {
-      path: 'create-pool',
-      component: CreatePoolComponent
+      path: 'create-event',
+      component: CreateEventComponent
     }]
   }
 ];

@@ -5,13 +5,18 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user.component';
 import { SharedModule } from '../shared/shared.module';
-import { CreatePoolComponent } from './create-pool/create-pool.component';
+import { CreateEventComponent } from './create-event/create-event.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
     SharedModule,
+    CommonModule,
     UserRoutingModule
   ],
-  declarations: [NavbarComponent, UserComponent, HomeComponent, CreatePoolComponent]
+  declarations: [NavbarComponent, UserComponent, HomeComponent, CreateEventComponent],
+  providers: [
+   
+  ],
 })
 export class UserModule { }

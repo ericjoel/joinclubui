@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {CdkTableModule} from '@angular/cdk/table';
 
 import {
   MatAutocompleteModule,
@@ -36,16 +37,20 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule,
+  MatTreeModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ListEventsComponent } from './components/list-events/list-events.component';
+
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MatNativeDateModule
   ],
   exports: [
+    CdkTableModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
@@ -76,6 +81,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSlideToggleModule,
     MatSnackBarModule,
     MatSortModule,
+    MatStepperModule,
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
@@ -84,6 +90,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     FlexLayoutModule,
     ReactiveFormsModule
   ],
-  declarations: []
+  declarations: [ListEventsComponent]
 })
 export class SharedModule { }
